@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
+using System.Runtime.Serialization.Json;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
@@ -15,11 +16,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using WebApplication1.Models;
-using WebApplication1.Providers;
-using WebApplication1.Results;
+using ConcordyaWebApi.Models;
+using ConcordyaWebApi.Providers;
+using ConcordyaWebApi.Results;
 
-namespace WebApplication1.Controllers
+namespace ConcordyaWebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
@@ -321,6 +322,11 @@ namespace WebApplication1.Controllers
         }
 
         // POST api/Account/Register
+        /// <summary>
+        /// regist a new user by phone.
+        /// </summary>
+        /// <param name="model">phone number</param>
+        /// <returns>username, defaultcompanyid, access_token</returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -340,7 +346,7 @@ namespace WebApplication1.Controllers
             }
 
            //call token api to get a token, return with other user information to client.
-            return await GetTokenForNewUser(model.Phone, model.Password, user);
+            return await GetTokenForNewUser(user.UserName, model.Password, user);
             //return Ok();
         }
 
@@ -414,8 +420,12 @@ namespace WebApplication1.Controllers
                 if (response.IsSuccessStatusCode)
                 {
                     var token = await response.Content.ReadAsStringAsync();
-
-                    return Ok(new { User = user, Token = token });
+                    //DataContractJsonSerializer
+                    Newtonsoft.Json.Linq.JObject joToken = Newtonsoft.Json.Linq.JObject.Parse(token);
+                    var tokenString = joToken["access_token"].ToString();
+                    var tokenType = joToken["token_type"].ToString();
+                    var expiresIn = joToken["expires_in"].ToString();
+                    return Ok(new { Username = username, CompanyId=user.DefaultCompanyId, Access_token=tokenString, Expires=expiresIn });
                 }
             }
             //if we go this far, something error happens
