@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>WebApplication1</name>
+        <name>ConcordyaWebApi</name>
     </assembly>
     <members>
         <member name="M:ConcordyaWebApi.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
