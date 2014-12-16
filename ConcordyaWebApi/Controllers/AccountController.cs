@@ -326,7 +326,15 @@ namespace ConcordyaWebApi.Controllers
         /// regist a new user by phone.
         /// </summary>
         /// <param name="model">phone number</param>
-        /// <returns>username, defaultcompanyid, access_token</returns>
+        /// <returns>userid, username, defaultcompanyid, access_token, such as:
+        /// {
+        ///     UserId: "ec94d5ef-39c6-4fa6-87f4-19f6fc9f87a2"
+        ///     Username: "13520660160"
+        ///     CompanyId: 0
+        ///     Access_token: "oWeI..."
+        ///     Expires: "1209599"
+        /// }\r\n
+        /// </returns>
         [AllowAnonymous]
         [Route("Register")]
         public async Task<IHttpActionResult> Register(RegisterBindingModel model)
@@ -346,8 +354,15 @@ namespace ConcordyaWebApi.Controllers
             }
 
            //call token api to get a token, return with other user information to client.
-            return await GetTokenForNewUser(user.UserName, model.Password, user);
-            //return Ok();
+            var tokenjsonString = GetTokenForNewUser(user.UserName, model.Password, user);
+
+            Newtonsoft.Json.Linq.JObject joToken = Newtonsoft.Json.Linq.JObject.Parse(tokenjsonString);
+            var tokenString = joToken["access_token"].ToString();
+            var tokenType = joToken["token_type"].ToString();
+            var expiresIn = joToken["expires_in"].ToString();
+
+            var returnObj = new { UserId = user.Id, Username = user.UserName, CompanyId = user.DefaultCompanyId, Access_token = tokenString, Expires = expiresIn };
+            return Ok(returnObj);
         }
 
         // POST api/Account/RegisterExternal
@@ -395,7 +410,8 @@ namespace ConcordyaWebApi.Controllers
         }
 
         #region Helpers
-        private async Task<IHttpActionResult> GetTokenForNewUser(string username, string password, ApplicationUser user)
+
+        private string GetTokenForNewUser(string username, string password, ApplicationUser user)
         {
             using (var client = new HttpClient())
             {
@@ -419,17 +435,12 @@ namespace ConcordyaWebApi.Controllers
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var token = await response.Content.ReadAsStringAsync();
+                    return response.Content.ReadAsStringAsync().Result;
                     //DataContractJsonSerializer
-                    Newtonsoft.Json.Linq.JObject joToken = Newtonsoft.Json.Linq.JObject.Parse(token);
-                    var tokenString = joToken["access_token"].ToString();
-                    var tokenType = joToken["token_type"].ToString();
-                    var expiresIn = joToken["expires_in"].ToString();
-                    return Ok(new { Username = username, CompanyId=user.DefaultCompanyId, Access_token=tokenString, Expires=expiresIn });
                 }
             }
             //if we go this far, something error happens
-            return InternalServerError();
+            return string.Empty;
         }
 
         private IAuthenticationManager Authentication

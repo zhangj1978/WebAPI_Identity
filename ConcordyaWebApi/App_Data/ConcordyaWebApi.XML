@@ -486,7 +486,15 @@
             regist a new user by phone.
             </summary>
             <param name="model">phone number</param>
-            <returns>username, defaultcompanyid, access_token</returns>
+            <returns>userid, username, defaultcompanyid, access_token, such as:
+            {
+                UserId: "ec94d5ef-39c6-4fa6-87f4-19f6fc9f87a2"
+                Username: "13520660160"
+                CompanyId: 0
+                Access_token: "oWeI..."
+                Expires: "1209599"
+            }\r\n
+            </returns>
         </member>
         <member name="M:ConcordyaWebApi.Controllers.VerifyCodeController.Get(System.String,System.String)">
             <summary>
