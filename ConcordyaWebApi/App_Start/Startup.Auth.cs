@@ -8,10 +8,10 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using ConcordyaWebApi.Providers;
-using ConcordyaWebApi.Models;
+using ConcordyaPayee.Web.Api.Providers;
+using ConcordyaPayee.Web.Api.Models;
 
-namespace ConcordyaWebApi
+namespace ConcordyaPayee.Web.Api
 {
     public partial class Startup
     {

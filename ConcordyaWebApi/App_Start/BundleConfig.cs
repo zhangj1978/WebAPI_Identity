@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 
-namespace ConcordyaWebApi
+namespace ConcordyaPayee.Web.Api
 {
     public class BundleConfig
     {

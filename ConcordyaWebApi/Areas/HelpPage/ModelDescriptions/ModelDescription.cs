@@ -1,6 +1,6 @@
 using System;
 
-namespace ConcordyaWebApi.Areas.HelpPage.ModelDescriptions
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Describes a type model.

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace ConcordyaWebApi.Models
+namespace ConcordyaPayee.Web.Api.Models
 {
     // Models used as parameters to AccountController actions.
 

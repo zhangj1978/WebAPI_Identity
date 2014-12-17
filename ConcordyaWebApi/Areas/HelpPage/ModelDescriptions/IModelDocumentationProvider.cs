@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 
-namespace ConcordyaWebApi.Areas.HelpPage.ModelDescriptions
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public interface IModelDocumentationProvider
     {

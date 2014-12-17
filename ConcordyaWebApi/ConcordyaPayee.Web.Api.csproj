@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ConcordyaWebApi</RootNamespace>
-    <AssemblyName>ConcordyaWebApi</AssemblyName>
+    <RootNamespace>ConcordyaPayee.Web.Api</RootNamespace>
+    <AssemblyName>ConcordyaPayee.Web.Api</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -204,6 +204,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -213,6 +214,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ConcordyaWebApi.XML" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -240,6 +242,7 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <None Include="Properties\PublishProfiles\ConcordyaAPI.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -269,7 +272,18 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <ProjectReference Include="..\ConcordyaPayee.Data\ConcordyaPayee.Data.csproj">
+      <Project>{795626d6-1920-4bd1-b017-4063ee1e3355}</Project>
+      <Name>ConcordyaPayee.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConcordyaPayee.Model\ConcordyaPayee.Model.csproj">
+      <Project>{2925ecec-9c27-4072-bd1d-d17748aeafce}</Project>
+      <Name>ConcordyaPayee.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConcordyaPayee.Thirdparty.Core\ConcordyaPayee.Thirdparty.Core.csproj">
+      <Project>{013dce34-b374-47ea-a827-9ff06e2b9f55}</Project>
+      <Name>ConcordyaPayee.Thirdparty.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -16,11 +16,11 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using ConcordyaWebApi.Models;
-using ConcordyaWebApi.Providers;
-using ConcordyaWebApi.Results;
+using ConcordyaPayee.Web.Api.Models;
+using ConcordyaPayee.Web.Api.Providers;
+using ConcordyaPayee.Web.Api.Results;
 
-namespace ConcordyaWebApi.Controllers
+namespace ConcordyaPayee.Web.Api.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
@@ -361,7 +361,7 @@ namespace ConcordyaWebApi.Controllers
             var tokenType = joToken["token_type"].ToString();
             var expiresIn = joToken["expires_in"].ToString();
 
-            var returnObj = new { UserId = user.Id, Username = user.UserName, CompanyId = user.DefaultCompanyId, Access_token = tokenString, Expires = expiresIn };
+            var returnObj = new { userId = user.Id, username = user.UserName, companyId = user.DefaultCompanyId, access_token = tokenString, expires = expiresIn };
             return Ok(returnObj);
         }
 

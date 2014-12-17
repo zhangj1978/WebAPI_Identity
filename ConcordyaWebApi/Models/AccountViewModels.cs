@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ConcordyaWebApi.Models
+namespace ConcordyaPayee.Web.Api.Models
 {
     // Models returned by AccountController actions.
 

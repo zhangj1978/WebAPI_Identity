@@ -1,4 +1,4 @@
-namespace ConcordyaWebApi.Areas.HelpPage
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage
 {
     /// <summary>
     /// Indicates whether the sample is used for request or response

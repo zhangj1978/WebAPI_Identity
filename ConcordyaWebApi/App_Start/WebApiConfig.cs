@@ -6,7 +6,7 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
 
-namespace ConcordyaWebApi
+namespace ConcordyaPayee.Web.Api
 {
     public static class WebApiConfig
     {

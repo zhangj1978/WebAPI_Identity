@@ -1,6 +1,6 @@
 using System;
 
-namespace ConcordyaWebApi.Areas.HelpPage
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage
 {
     /// <summary>
     /// This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.

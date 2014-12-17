@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Reflection;
 
-namespace ConcordyaWebApi.Areas.HelpPage.ModelDescriptions
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     internal static class ModelNameHelper
     {

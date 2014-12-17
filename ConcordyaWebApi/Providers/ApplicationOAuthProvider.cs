@@ -9,9 +9,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using ConcordyaWebApi.Models;
+using ConcordyaPayee.Web.Api.Models;
 
-namespace ConcordyaWebApi.Providers
+namespace ConcordyaPayee.Web.Api.Providers
 {
     public class ApplicationOAuthProvider : OAuthAuthorizationServerProvider
     {

@@ -1,6 +1,6 @@
 using System.Collections.ObjectModel;
 
-namespace ConcordyaWebApi.Areas.HelpPage.ModelDescriptions
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     public class ComplexTypeModelDescription : ModelDescription
     {

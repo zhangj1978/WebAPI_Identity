@@ -11,10 +11,10 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Description;
-using ConcordyaWebApi.Areas.HelpPage.ModelDescriptions;
-using ConcordyaWebApi.Areas.HelpPage.Models;
+using ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions;
+using ConcordyaPayee.Web.Api.Areas.HelpPage.Models;
 
-namespace ConcordyaWebApi.Areas.HelpPage
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage
 {
     public static class HelpPageConfigurationExtensions
     {

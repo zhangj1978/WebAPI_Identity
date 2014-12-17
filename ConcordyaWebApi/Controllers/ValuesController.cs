@@ -5,7 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace ConcordyaWebApi.Controllers
+namespace ConcordyaPayee.Web.Api.Controllers
 {
     [Authorize]
     public class ValuesController : ApiController

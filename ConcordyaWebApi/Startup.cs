@@ -4,9 +4,9 @@ using System.Linq;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(ConcordyaWebApi.Startup))]
+[assembly: OwinStartup(typeof(ConcordyaPayee.Web.Api.Startup))]
 
-namespace ConcordyaWebApi
+namespace ConcordyaPayee.Web.Api
 {
     public partial class Startup
     {

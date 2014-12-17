@@ -1,10 +1,10 @@
 using System;
 using System.Web.Http;
 using System.Web.Mvc;
-using ConcordyaWebApi.Areas.HelpPage.ModelDescriptions;
-using ConcordyaWebApi.Areas.HelpPage.Models;
+using ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions;
+using ConcordyaPayee.Web.Api.Areas.HelpPage.Models;
 
-namespace ConcordyaWebApi.Areas.HelpPage.Controllers
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.Controllers
 {
     /// <summary>
     /// The controller that will handle requests for the help page.

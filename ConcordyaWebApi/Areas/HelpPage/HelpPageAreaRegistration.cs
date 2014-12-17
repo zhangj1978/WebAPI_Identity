@@ -1,7 +1,7 @@
 using System.Web.Http;
 using System.Web.Mvc;
 
-namespace ConcordyaWebApi.Areas.HelpPage
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage
 {
     public class HelpPageAreaRegistration : AreaRegistration
     {

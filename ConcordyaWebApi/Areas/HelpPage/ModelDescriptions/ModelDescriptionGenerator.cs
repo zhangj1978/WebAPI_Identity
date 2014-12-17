@@ -11,7 +11,7 @@ using System.Web.Http.Description;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace ConcordyaWebApi.Areas.HelpPage.ModelDescriptions
+namespace ConcordyaPayee.Web.Api.Areas.HelpPage.ModelDescriptions
 {
     /// <summary>
     /// Generates model descriptions for given types.
