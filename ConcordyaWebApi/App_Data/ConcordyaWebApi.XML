@@ -496,6 +496,13 @@
             }\r\n
             </returns>
         </member>
+        <member name="M:ConcordyaPayee.Web.Api.Controllers.BillController.Post(ConcordyaPayee.Web.Api.Models.BillItemModel)">
+            <summary>
+            新增一笔Bill信息
+            </summary>
+            <param name="bill"></param>
+            <returns></returns>
+        </member>
         <member name="M:ConcordyaPayee.Web.Api.Controllers.VerifyCodeController.#ctor(ConcordyaPayee.Data.Repositories.ISmsRepository,ConcordyaPayee.Data.Infrastructure.IUnitOfWork)">
             <summary>
             申请发送，或者验证注册码

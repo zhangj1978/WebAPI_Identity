@@ -9,7 +9,7 @@ namespace ConcordyaPayee.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "ConcordyaPayee.Data.ConcordyaPayeeDataContext";
         }
 

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using Microsoft.AspNet.Identity;
-using ConcordyaPayee.Model;
 using ConcordyaPayee.Data.Repositories;
 using System.Text;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data;
 using ConcordyaPayee.Thirdparty.Core;
 using System.Threading.Tasks;
+using ConcordyaPayee.Model.Entities;
 
 namespace ConcordyaPayee.Web.Api.Controllers
 {

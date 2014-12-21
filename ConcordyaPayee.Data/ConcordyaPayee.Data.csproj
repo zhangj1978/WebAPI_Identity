@@ -61,10 +61,19 @@
     <Compile Include="Migrations\201412170552087_SMSSendRequest.Designer.cs">
       <DependentUpon>201412170552087_SMSSendRequest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412190219301_Bill.cs" />
+    <Compile Include="Migrations\201412190219301_Bill.Designer.cs">
+      <DependentUpon>201412190219301_Bill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412190708143_newBill.cs" />
+    <Compile Include="Migrations\201412190708143_newBill.Designer.cs">
+      <DependentUpon>201412190708143_newBill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
-    <Compile Include="Repositors\SmsSendRepository.cs" />
+    <Compile Include="Repositories\BillRepository.cs" />
+    <Compile Include="Repositories\SmsSendRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -82,6 +91,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412170552087_SMSSendRequest.resx">
       <DependentUpon>201412170552087_SMSSendRequest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412190219301_Bill.resx">
+      <DependentUpon>201412190219301_Bill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412190708143_newBill.resx">
+      <DependentUpon>201412190708143_newBill.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

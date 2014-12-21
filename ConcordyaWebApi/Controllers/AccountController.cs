@@ -419,24 +419,15 @@ namespace ConcordyaPayee.Web.Api.Controllers
                 client.BaseAddress = new Uri(host);
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                
-                //var tRequest = new {grant_type = "password", username = username, password = password };
-                //var tRequest = new TokenRequestBindingModel() { Grant_type = "password", Username = username, Password = password };
                 Dictionary<string, string> credential = new Dictionary<string, string>();
                 credential.Add("grant_type", "password");
                 credential.Add("username", username);
                 credential.Add("password", password);
 
                 HttpResponseMessage response = client.PostAsync(host + "/token", new FormUrlEncodedContent(credential)).Result;
-
-                //HttpResponseMessage response = await client.PostAsJsonAsync("/token", tRequest);
-
-                //HttpResponseMessage response = await client.SendAsync(request, HttpCompletionOption.ResponseContentRead);
-
                 if (response.IsSuccessStatusCode)
                 {
                     return response.Content.ReadAsStringAsync().Result;
-                    //DataContractJsonSerializer
                 }
             }
             //if we go this far, something error happens
@@ -450,6 +441,8 @@ namespace ConcordyaPayee.Web.Api.Controllers
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
+            string errString = string.Empty;
+
             if (result == null)
             {
                 return InternalServerError();
@@ -462,6 +455,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
                     foreach (string error in result.Errors)
                     {
                         ModelState.AddModelError("", error);
+                        errString += error;
                     }
                 }
 
@@ -470,8 +464,8 @@ namespace ConcordyaPayee.Web.Api.Controllers
                     // No ModelState errors are available to send, so just return an empty BadRequest.
                     return BadRequest();
                 }
-
-                return BadRequest(ModelState);
+                
+                return BadRequest(errString);
             }
 
             return null;

@@ -31,8 +31,8 @@ namespace ConcordyaPayee.Thirdparty.Core
         {
 
 #if DEBUG
-            var r = new Random().Next(2);
-            return r == 1;
+            //var r = new Random().Next(10);
+            //return r<=8 ;
 #endif
 
             using (var client = new HttpClient())
@@ -49,11 +49,20 @@ namespace ConcordyaPayee.Thirdparty.Core
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var stream = response.Content.ReadAsStreamAsync().Result;
-                    XmlSerializer xmlSerializer = new XmlSerializer(typeof(EmaySmsResponse));
-                    EmaySmsResponse result = xmlSerializer.Deserialize(stream) as EmaySmsResponse;
-                    if (result != null && result.Error == "0") return true;
-                    else throw new Exception(result.Message);
+                    var stringResult = response.Content.ReadAsStringAsync().Result;
+                    if (stringResult.Contains("<error>0</error>"))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException(stringResult);
+                        //return false;
+                    }
+                    //XmlSerializer xmlSerializer = new XmlSerializer(typeof(EmaySmsResponse));
+                    //EmaySmsResponse result = xmlSerializer.Deserialize(stream) as EmaySmsResponse;
+                    //if (result != null && result.Error == "0") return true;
+                    //else throw new Exception(result.Message);
                 }
             }
             return false;
