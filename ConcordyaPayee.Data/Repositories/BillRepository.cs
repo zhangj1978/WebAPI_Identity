@@ -16,15 +16,10 @@ namespace ConcordyaPayee.Data.Repositors
         {
             
         }
-
-        public IEnumerable<Bill> GetBillsWithItem()
-        {
-            throw new NotImplementedException();
-        }
     }
 
-    public interface IBillRepository: IRepository<Bill>
+    public interface IBillRepository:IRepository<Bill>
     {
-        IEnumerable<Bill> GetBillsWithItem();
+
     }
 }
