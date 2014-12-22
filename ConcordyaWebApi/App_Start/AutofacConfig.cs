@@ -10,7 +10,6 @@ using Autofac.Integration.Mvc;
 using ConcordyaPayee.Data;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;
-using ConcordyaPayee.Data.Repositors;
 using ConcordyaPayee.Web.Api.Controllers;
 
 namespace ConcordyaPayee.Web.Api.App_Start
@@ -24,11 +23,11 @@ namespace ConcordyaPayee.Web.Api.App_Start
             builder.RegisterControllers(typeof(ConcordyaPayee.Web.Api.Controllers.VerifyCodeController).Assembly);
             builder.RegisterType<DatabaseFactory>().As<IDatabaseFactory>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
-            builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly)
-                .AsClosedTypesOf(typeof(IRepository<>)).AsImplementedInterfaces();
             //builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly)
-            //    .Where(t => t.Name.EndsWith("Repository"))
-            //    .AsImplementedInterfaces().InstancePerRequest();  
+            //    .AsClosedTypesOf(typeof(IRepository<>)).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces().InstancePerRequest();  
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

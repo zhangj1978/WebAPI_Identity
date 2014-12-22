@@ -11,10 +11,11 @@ using ConcordyaPayee.Data;
 using ConcordyaPayee.Thirdparty.Core;
 using System.Threading.Tasks;
 using ConcordyaPayee.Model.Entities;
+using System.Web.Mvc;
 
 namespace ConcordyaPayee.Web.Api.Controllers
 {
-    [Route("api/verifycode")]
+    [System.Web.Http.Route("api/verifycode")]
     public class VerifyCodeController : ApiController
     {
         private readonly ISmsRepository smsRepository;
@@ -32,6 +33,8 @@ namespace ConcordyaPayee.Web.Api.Controllers
         }
 
         public VerifyCodeController()
+            : this(DependencyResolver.Current.GetService<ISmsRepository>(),
+                DependencyResolver.Current.GetService<IUnitOfWork>())
         {
             DatabaseFactory dbFactory = new DatabaseFactory();
             this.smsRepository = new SmsSendRepository(dbFactory);
@@ -70,10 +73,6 @@ namespace ConcordyaPayee.Web.Api.Controllers
         /// <returns>verifyResult:true 或者 verifyResult:false</returns>
         public IHttpActionResult Get([FromUri] string phone, string verifycode)
         {
-#if DEBUG
-            return Ok(new {verifyResult = phone == verifycode });
-#endif
-
             var sms = smsRepository.GetMany(s => s.ValidUntil >= DateTime.Now && s.Phone == phone).OrderByDescending(k => k.LastUpdatedOn).ToList().First();
             var sentCode = string.Empty;
             if ((sms != null) && (!string.IsNullOrEmpty(sms.VerifyCode)))

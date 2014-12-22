@@ -12,6 +12,11 @@ namespace ConcordyaPayee.Model.Entities
         public string Id { get; set; }
         public string BillNumber { get; set; }
         public DateTime BillDate { get; set; }
+        public DateTime DueDate { get; set; }
+        public decimal TotalAmount { get; set; }
+        public int BillStatus { get; set; }
+        public bool IsRecurring { get; set; }
+
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }

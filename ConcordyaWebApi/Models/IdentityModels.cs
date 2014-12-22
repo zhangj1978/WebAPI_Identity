@@ -18,16 +18,16 @@ namespace ConcordyaPayee.Web.Api.Models
             
             return userIdentity;
         }
+
         public int DefaultCompanyId { get; set; }
         public int DefaultBankAccountId { get; set; }
-        //public virtual IEnumerable<CompanyEntity> Companies { get; set; }
 
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("ConcordyaPayeeDataContext", throwIfV1Schema: false)
         {
         }
         

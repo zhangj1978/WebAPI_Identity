@@ -3,7 +3,7 @@ namespace ConcordyaPayee.Web.Api.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class ApplicationUser : DbMigration
+    public partial class Init : DbMigration
     {
         public override void Up()
         {

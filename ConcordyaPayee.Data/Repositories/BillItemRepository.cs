@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ConcordyaPayee.Data.Infrastructure;
-using ConcordyaPayee.Data.Repositories;
 using ConcordyaPayee.Model.Entities;
 
 namespace ConcordyaPayee.Data.Repositories
 {
-    public class BillRepository : RepositoryBase<Bill>, IBillRepository
+    public class BillItemRepository : RepositoryBase<BillItem>, IBillItemRepository
     {
-        public BillRepository(IDatabaseFactory dbFactory):base(dbFactory)
+        public BillItemRepository(IDatabaseFactory databaseFactory)
+            : base(databaseFactory)
         {
-            
+
         }
     }
 
-    public interface IBillRepository:IRepository<Bill>
+    public interface IBillItemRepository : IRepository<BillItem>
     {
 
     }

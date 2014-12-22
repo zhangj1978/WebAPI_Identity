@@ -9,8 +9,7 @@ namespace ConcordyaPayee.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
-            ContextKey = "ConcordyaPayee.Data.ConcordyaPayeeDataContext";
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(ConcordyaPayee.Data.ConcordyaPayeeDataContext context)

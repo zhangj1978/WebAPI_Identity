@@ -7,13 +7,13 @@ namespace ConcordyaPayee.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class SMSSendRequest : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(SMSSendRequest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412170552087_SMSSendRequest"; }
+            get { return "201412221143243_init"; }
         }
         
         string IMigrationMetadata.Source

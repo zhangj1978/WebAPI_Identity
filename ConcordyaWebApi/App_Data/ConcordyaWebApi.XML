@@ -496,7 +496,7 @@
             }\r\n
             </returns>
         </member>
-        <member name="M:ConcordyaPayee.Web.Api.Controllers.BillController.Post(ConcordyaPayee.Web.Api.Models.BillItemModel)">
+        <member name="M:ConcordyaPayee.Web.Api.Controllers.BillController.Post(ConcordyaPayee.Web.Api.Models.BillModel)">
             <summary>
             新增一笔Bill信息
             </summary>

@@ -8,6 +8,7 @@ namespace ConcordyaPayee.Web.Api.Models
     public class BillItemModel
     {
         public string Id { get; set; }
+        public string href { get; set; }
         public string Name { get; set; }
         public string Unit { get; set; }
         public decimal PricePerUnit { get; set; }

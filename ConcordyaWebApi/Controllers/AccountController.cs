@@ -361,7 +361,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
             var tokenType = joToken["token_type"].ToString();
             var expiresIn = joToken["expires_in"].ToString();
 
-            var returnObj = new { userId = user.Id, username = user.UserName, companyId = user.DefaultCompanyId, access_token = tokenString, expires = expiresIn };
+            var returnObj = new { userId = user.Id, username = user.UserName, access_token = tokenString, expires = expiresIn };
             return Ok(returnObj);
         }
 
@@ -424,7 +424,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
                 credential.Add("username", username);
                 credential.Add("password", password);
 
-                HttpResponseMessage response = client.PostAsync(host + "/token", new FormUrlEncodedContent(credential)).Result;
+                HttpResponseMessage response = client.PostAsync(host + "/api/token", new FormUrlEncodedContent(credential)).Result;
                 if (response.IsSuccessStatusCode)
                 {
                     return response.Content.ReadAsStringAsync().Result;

@@ -31,8 +31,8 @@ namespace ConcordyaPayee.Thirdparty.Core
         {
 
 #if DEBUG
-            //var r = new Random().Next(10);
-            //return r<=8 ;
+            var r = new Random().Next(10);
+            return r <= 8;
 #endif
 
             using (var client = new HttpClient())
