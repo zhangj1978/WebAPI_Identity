@@ -213,9 +213,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201412221144326_Init.cs" />
-    <Compile Include="Migrations\201412221144326_Init.Designer.cs">
-      <DependentUpon>201412221144326_Init.cs</DependentUpon>
+    <Compile Include="Migrations\201412231523487_InitIdentityDB.cs" />
+    <Compile Include="Migrations\201412231523487_InitIdentityDB.Designer.cs">
+      <DependentUpon>201412231523487_InitIdentityDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412231544369_changeUser.cs" />
+    <Compile Include="Migrations\201412231544369_changeUser.Designer.cs">
+      <DependentUpon>201412231544369_changeUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -314,8 +318,11 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412221144326_Init.resx">
-      <DependentUpon>201412221144326_Init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412231523487_InitIdentityDB.resx">
+      <DependentUpon>201412231523487_InitIdentityDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412231544369_changeUser.resx">
+      <DependentUpon>201412231544369_changeUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -7,13 +7,13 @@ namespace ConcordyaPayee.Web.Api.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class Init : IMigrationMetadata
+    public sealed partial class InitIdentityDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Init));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitIdentityDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201412221144326_Init"; }
+            get { return "201412231523487_InitIdentityDB"; }
         }
         
         string IMigrationMetadata.Source
