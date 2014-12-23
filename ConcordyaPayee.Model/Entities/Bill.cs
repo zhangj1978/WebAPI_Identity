@@ -16,13 +16,16 @@ namespace ConcordyaPayee.Model.Entities
         public decimal TotalAmount { get; set; }
         public int BillStatus { get; set; }
         public bool IsRecurring { get; set; }
+        public string VendorId { get; set; }
+        public virtual Vendor Vendor { get; set; }
 
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }
         public string LastUpdatedBy { get; set; }
         public string Description { get; set; }
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; }
+        public virtual Category Category { get; set; }
         public virtual List<BillItem> BillItems { get; set; }
     }
 }

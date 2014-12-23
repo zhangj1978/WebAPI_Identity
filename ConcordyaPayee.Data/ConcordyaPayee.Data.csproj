@@ -53,9 +53,17 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
-    <Compile Include="Migrations\201412221143243_init.cs" />
-    <Compile Include="Migrations\201412221143243_init.Designer.cs">
-      <DependentUpon>201412221143243_init.cs</DependentUpon>
+    <Compile Include="Migrations\201412230811163_init.cs" />
+    <Compile Include="Migrations\201412230811163_init.Designer.cs">
+      <DependentUpon>201412230811163_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412230848359_Categories.cs" />
+    <Compile Include="Migrations\201412230848359_Categories.Designer.cs">
+      <DependentUpon>201412230848359_Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201412230852184_UpdateItem.cs" />
+    <Compile Include="Migrations\201412230852184_UpdateItem.Designer.cs">
+      <DependentUpon>201412230852184_UpdateItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -75,8 +83,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412221143243_init.resx">
-      <DependentUpon>201412221143243_init.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201412230811163_init.resx">
+      <DependentUpon>201412230811163_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412230848359_Categories.resx">
+      <DependentUpon>201412230848359_Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412230852184_UpdateItem.resx">
+      <DependentUpon>201412230852184_UpdateItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

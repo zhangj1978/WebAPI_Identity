@@ -42,6 +42,7 @@
     <Compile Include="Entities\Bill.cs" />
     <Compile Include="Entities\CompanyCategory.cs" />
     <Compile Include="Entities\BillItems.cs" />
+    <Compile Include="Entities\Vendor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\SMSSendRequest.cs" />
   </ItemGroup>

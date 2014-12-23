@@ -14,8 +14,16 @@ namespace ConcordyaPayee.Data.Repositories
     {
         public BillRepository(IDatabaseFactory dbFactory):base(dbFactory)
         {
-            
+            _dbFactory = dbFactory;
         }
+
+        public override IEnumerable<Bill> GetAll()
+        {
+            var bills = base.DataContext.Bills.Take(30);
+            return bills; 
+        }
+
+        public IDatabaseFactory _dbFactory { get; set; }
     }
 
     public interface IBillRepository:IRepository<Bill>

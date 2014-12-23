@@ -38,12 +38,42 @@ namespace ConcordyaPayee.Data.Migrations
                         TotalAmount = c.Decimal(nullable: false, precision: 18, scale: 2),
                         BillStatus = c.Int(nullable: false),
                         IsRecurring = c.Boolean(nullable: false),
+                        VendorId = c.String(maxLength: 128),
                         CreatedOn = c.DateTime(nullable: false),
                         CreatedBy = c.String(),
                         LastUpdatedOn = c.DateTime(nullable: false),
                         LastUpdatedBy = c.String(),
                         Description = c.String(),
-                        CategoryId = c.Int(nullable: false),
+                        CategoryId = c.String(maxLength: 128),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Categories", t => t.CategoryId)
+                .ForeignKey("dbo.Vendors", t => t.VendorId)
+                .Index(t => t.VendorId)
+                .Index(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.Categories",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                        ParentId = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Vendors",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                        CompanyId = c.String(),
+                        Description = c.String(),
+                        CreatedBy = c.String(),
+                        CreatedOn = c.DateTime(nullable: false),
+                        LastUpdatedBy = c.String(),
+                        LastUpdatedOn = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -66,9 +96,15 @@ namespace ConcordyaPayee.Data.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.Bills", "VendorId", "dbo.Vendors");
+            DropForeignKey("dbo.Bills", "CategoryId", "dbo.Categories");
             DropForeignKey("dbo.BillItems", "BillId", "dbo.Bills");
+            DropIndex("dbo.Bills", new[] { "CategoryId" });
+            DropIndex("dbo.Bills", new[] { "VendorId" });
             DropIndex("dbo.BillItems", new[] { "BillId" });
             DropTable("dbo.SMSSendRequests");
+            DropTable("dbo.Vendors");
+            DropTable("dbo.Categories");
             DropTable("dbo.Bills");
             DropTable("dbo.BillItems");
         }

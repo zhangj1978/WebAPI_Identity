@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ConcordyaPayee.Model.Entities
+namespace ConcordyaPayee.Web.Api.Models
 {
-    public class Category
+    public class CategoryModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
