@@ -77,6 +77,31 @@ namespace ConcordyaPayee.Web.Api.Controllers
             return Ok();
         }
 
+        // POST api/Account/Login
+        [AllowAnonymous]
+        [Route("Login")]
+        public IHttpActionResult Login(LoginBindingModel login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            UserManager.PasswordHasher.HashPassword("123456");
+            var user = UserManager.FindByName(login.Username);
+            if (user == null) return BadRequest("user does not exist.");
+
+            //call token api to get a token, return with other user information to client.
+            var tokenjsonString = GetTokenForNewUser(login.Username, login.Password);
+
+            Newtonsoft.Json.Linq.JObject joToken = Newtonsoft.Json.Linq.JObject.Parse(tokenjsonString);
+            var tokenString = joToken["access_token"].ToString();
+            var tokenType = joToken["token_type"].ToString();
+            var expiresIn = joToken["expires_in"].ToString();
+
+            var returnObj = new { userId = user.Id, username = user.UserName, access_token = tokenString, expires = expiresIn };
+            return Ok(returnObj);
+        }
+
         // GET api/Account/ManageInfo?returnUrl=%2F&generateState=true
         [Route("ManageInfo")]
         public async Task<ManageInfoViewModel> GetManageInfo(string returnUrl, bool generateState = false)
@@ -354,7 +379,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
             }
 
            //call token api to get a token, return with other user information to client.
-            var tokenjsonString = GetTokenForNewUser(user.UserName, model.Password, user);
+            var tokenjsonString = GetTokenForNewUser(user.UserName, model.Password);
 
             Newtonsoft.Json.Linq.JObject joToken = Newtonsoft.Json.Linq.JObject.Parse(tokenjsonString);
             var tokenString = joToken["access_token"].ToString();
@@ -411,7 +436,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
 
         #region Helpers
 
-        private string GetTokenForNewUser(string username, string password, ApplicationUser user)
+        private string GetTokenForNewUser(string username, string password)
         {
             using (var client = new HttpClient())
             {

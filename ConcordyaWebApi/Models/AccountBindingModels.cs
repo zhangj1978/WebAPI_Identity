@@ -20,6 +20,12 @@ namespace ConcordyaPayee.Web.Api.Models
         public string Grant_type { get; set; }
     }
 
+    public class LoginBindingModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+
     public class ChangePasswordBindingModel
     {
         [Required]
