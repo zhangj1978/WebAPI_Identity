@@ -21,7 +21,7 @@ namespace ConcordyaPayee.Web.Api.Models
 
         public int DefaultCompanyId { get; set; }
         public int DefaultBankAccountId { get; set; }
-
+        public int deTestInt { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
