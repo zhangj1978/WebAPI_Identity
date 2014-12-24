@@ -18,10 +18,10 @@ namespace ConcordyaPayee.Web.Api.Models
             dto.PricePerUnit = entity.PricePerUnit;
             dto.Quantity = entity.Quantity;
             dto.BillId = entity.BillId;
-            dto.CreatedBy = entity.CreatedBy;
-            dto.CreatedOn = entity.CreatedOn;
-            dto.LastUpdatedBy = entity.LastUpdatedBy;
-            dto.LastUpdatedOn = entity.LastUpdatedOn;
+            //dto.CreatedBy = entity.CreatedBy;
+            //dto.CreatedOn = entity.CreatedOn;
+            //dto.LastUpdatedBy = entity.LastUpdatedBy;
+            //dto.LastUpdatedOn = entity.LastUpdatedOn;
             return dto;
         }
 
@@ -34,10 +34,10 @@ namespace ConcordyaPayee.Web.Api.Models
             entity.PricePerUnit = dto.PricePerUnit;
             entity.Quantity = dto.Quantity;
             entity.BillId = dto.BillId;
-            entity.CreatedBy = dto.CreatedBy;
-            entity.CreatedOn = dto.CreatedOn;
-            entity.LastUpdatedBy = dto.LastUpdatedBy;
-            entity.LastUpdatedOn = dto.LastUpdatedOn;
+            //entity.CreatedBy = dto.CreatedBy;
+            //entity.CreatedOn = dto.CreatedOn;
+            //entity.LastUpdatedBy = dto.LastUpdatedBy;
+            //entity.LastUpdatedOn = dto.LastUpdatedOn;
             return entity;
         }
         #endregion
@@ -52,14 +52,19 @@ namespace ConcordyaPayee.Web.Api.Models
             entity.DueDate = dto.DueDate;
             entity.Description = dto.Description;
             entity.TotalAmount = dto.Amount;
-            entity.CategoryId = dto.CategoryId;
             entity.CreatedBy = dto.CreatedBy;
             entity.CreatedOn = dto.CreatedOn;
             entity.IsRecurring = dto.IsRecurring;
+            entity.CreatedOn = dto.CreatedOn;
+            entity.CreatedBy = dto.CreatedBy;
             entity.LastUpdatedBy = dto.LastUpdatedBy;
             entity.LastUpdatedOn = dto.LastUpdatedOn;
             entity.BillStatus = (int)dto.Status;
-
+            entity.VendorId = dto.Vendor.Id;
+            entity.Vendor = Create(dto.Vendor);
+            entity.CategoryId = dto.Category.Id;
+            entity.Category = Create(dto.Category);
+            
             if (dto.Items != null && dto.Items.Count > 0)
             {
                 entity.BillItems = new List<BillItem>(dto.Items.Count);
@@ -86,7 +91,9 @@ namespace ConcordyaPayee.Web.Api.Models
             dto.DueDate = entity.DueDate;
             dto.Description = entity.Description;
             dto.Amount = entity.TotalAmount;
-            dto.CategoryId = entity.CategoryId;
+            dto.Vendor = Create(entity.Vendor);
+            dto.Category = Create(entity.Category);
+            
             dto.CreatedBy = entity.CreatedBy;
             dto.CreatedOn = entity.CreatedOn;
             dto.IsRecurring = entity.IsRecurring;
@@ -110,6 +117,44 @@ namespace ConcordyaPayee.Web.Api.Models
             //TODO: recurring
 
             return dto;
+        }
+        #endregion
+
+        #region Category
+        public static Category Create(CategoryModel dto)
+        {
+            var e = new Category();
+            e.Id = dto.Id;
+            e.Name = dto.Name;
+            e.ParentId = dto.ParentId;
+            return e;
+        }
+
+        public static CategoryModel Create(Category e)
+        {
+            var d = new CategoryModel();
+            d.Id = e.Id;
+            d.Name = e.Name;
+            d.ParentId = e.ParentId;
+            return d;
+        }
+        #endregion
+
+        #region Vendor
+        public static Vendor Create(VendorModel d)
+        {
+            var e = new Vendor();
+            e.Id = d.Id;
+            e.Name = d.Name;
+            return e;
+        }
+
+        public static VendorModel Create(Vendor e)
+        {
+            var d = new VendorModel();
+            d.Id = e.Id;
+            d.Name = e.Name;
+            return d;
         }
         #endregion
     }

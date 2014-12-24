@@ -73,7 +73,10 @@ namespace ConcordyaPayee.Web.Api.Controllers
         /// <returns>verifyResult:true 或者 verifyResult:false</returns>
         public IHttpActionResult Get([FromUri] string phone, string verifycode)
         {
-            var sms = smsRepository.GetMany(s => s.ValidUntil >= DateTime.Now && s.Phone == phone).OrderByDescending(k => k.LastUpdatedOn).ToList().First();
+#if DEBUG
+            return Ok(new {verifyResult = phone == verifycode});
+#endif
+            var sms = smsRepository.GetMany(s => s.ValidUntil >= DateTime.Now && s.Phone == phone).OrderByDescending(k => k.LastUpdatedOn).ToList().FirstOrDefault();
             var sentCode = string.Empty;
             if ((sms != null) && (!string.IsNullOrEmpty(sms.VerifyCode)))
             {
@@ -81,7 +84,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
             }
             else
             {
-                return NotFound();
+                return Ok(new { verifyResult = false });
             }
             return Ok(new {verifyResult = sentCode == verifycode});
         }

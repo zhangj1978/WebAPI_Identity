@@ -11,6 +11,8 @@ using ConcordyaPayee.Model.Entities;
 using ConcordyaPayee.Web.Api.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace ConcordyaPayee.Web.Api.Controllers
 {
@@ -36,6 +38,8 @@ namespace ConcordyaPayee.Web.Api.Controllers
             //DependencyResolver.Current.GetService<IBillItemRepository>(),
             //DependencyResolver.Current.GetService<IUnitOfWork>())
         {
+            //var temp = DependencyResolver.Current.GetService<IBillRepository>();
+
             var dbFactory = new DatabaseFactory();
             _billRepo = new BillRepository(dbFactory);
             _billItemRepo = new BillItemRepository(dbFactory);
@@ -46,7 +50,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
         {
             var sevenDaysAgo = DateTime.Now.AddDays(-7);
             var _userId = User.Identity.GetUserId();
-            var billEntitys = _billRepo.GetAll().ToList();
+            var billEntitys = _billRepo.GetAll().OrderByDescending(k=> k.LastUpdatedOn).ToList();
             //var billEntitys = _billRepo.GetMany(
             //    b => b.DueDate >= sevenDaysAgo
             //        && b.CreatedBy == _currentUser.Id);
@@ -54,25 +58,29 @@ namespace ConcordyaPayee.Web.Api.Controllers
             List<BillModel> billDtos = new List<BillModel>(billEntitys.Count());
             foreach (var e in billEntitys)
             {
-                var d = new BillModel();
-                d.Amount = e.TotalAmount;
-                d.Id = e.Id;
-                d.CreatedBy = e.Id;
-                d.DueDate = e.DueDate;
-                d.BillDate = e.DueDate;
-                d.BillNumber = e.BillNumber;
-                d.CategoryId = e.CategoryId;
-                d.Description = e.Description;
-                d.Status = (BillStatus)e.BillStatus;
-
+                var d = ModelFactory.Create(e);
                 billDtos.Add(d);
             }
+            var jsonSerializerSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+            var json = JsonConvert.SerializeObject(billDtos, Formatting.Indented, jsonSerializerSettings);
+
             return Ok(billDtos);
         }
 
+        
         public IHttpActionResult Get([FromUri]string id)
         {
-            throw new NotImplementedException();
+            var eBill = _billRepo.Get(b => b.Id == id);
+            //var items = _billItemRepo.GetMany(i => i.BillId == id).Take(30).OrderByDescending(k => k.Name).ToList();
+            //foreach (var item in items)
+            //{
+            //    eBill.BillItems.Add(item);
+            //}
+
+            if (eBill == null) return NotFound();
+
+            var dtoBill = ModelFactory.Create(eBill);
+            return Ok(dtoBill);
         }
 
         /// <summary>
@@ -82,13 +90,14 @@ namespace ConcordyaPayee.Web.Api.Controllers
         /// <returns></returns>
         public IHttpActionResult Post([FromBody] BillModel bill)
         {
-            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             if (bill == null) return InternalServerError(new ArgumentNullException("Bills 信息为空"));
-
-            //_userManager = Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            //_currentUser = _userManager.FindById(User.Identity.GetUserId());
-
+            
             var dateNow = DateTime.UtcNow;
+
             bill.Id = Guid.NewGuid().ToString();
             bill.CreatedBy = User.Identity.GetUserId();
             bill.CreatedOn = dateNow;
@@ -96,7 +105,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
             bill.LastUpdatedBy = User.Identity.GetUserId();
 
             var entity = ModelFactory.Create(bill);
-
+            
             if (entity.BillItems != null)
             {
                 foreach (var item in entity.BillItems)
@@ -106,7 +115,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
             }
             _billRepo.Add(entity);
             _unitOfWork.Commit();
-            return Ok(bill);
+            return Created("/bill/"+bill.Id,bill);
         }
 
         private BillItemModel CreateBillItem(BillItemModel item)

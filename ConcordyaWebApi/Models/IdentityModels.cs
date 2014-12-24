@@ -19,15 +19,15 @@ namespace ConcordyaPayee.Web.Api.Models
             return userIdentity;
         }
 
-        public int DefaultCompanyId { get; set; }
-        public int DefaultBankAccountId { get; set; }
-        public int deTestInt { get; set; }
+
+        public string DefaultCompanyId { get; set; }
+        public string DefaultBankAccountId { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("ConcordyaPayeeDataContext", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
         

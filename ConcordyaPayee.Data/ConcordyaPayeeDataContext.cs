@@ -13,6 +13,8 @@ namespace ConcordyaPayee.Data
         public DbSet<SMSSendRequest> SmsSendOuts { get; set; }
         public DbSet<Bill> Bills { get; set; }
         public DbSet<BillItem> BillItems { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public virtual void Commit()
         {

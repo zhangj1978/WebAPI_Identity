@@ -17,13 +17,16 @@ namespace ConcordyaPayee.Web.Api.Models
         public DateTime DueDate { get; set; }
         public BillStatus Status { get; set; }
         public bool IsRecurring { get; set; }
-
+        [Required]
+        public virtual VendorModel Vendor{ get; set; }
         public DateTime CreatedOn { get; set; }
         public string CreatedBy { get; set; }
         public DateTime LastUpdatedOn { get; set; }
         public string LastUpdatedBy { get; set; }
         public string Description { get; set; }
-        public int CategoryId { get; set; }
+        //public int CategoryId { get; set; }
+        [Required]
+        public virtual CategoryModel Category { get; set; }
         public virtual List<BillItemModel> Items { get; set; }
         public virtual RecurringSettingModel RecurringSetting { get; set; }
     }
