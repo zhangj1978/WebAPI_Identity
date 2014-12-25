@@ -7,13 +7,17 @@ using System.Web.Http;
 using System.Web.Mvc;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 using ConcordyaPayee.Web.Api.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-
+using ConcordayPayee.Web.ViewModel;
+using ConcordyaPayee.Domain;
+using AutoMapper;
+using ConcordyaPayee.CommandProcessor;
+using ConcordyaPayee.Core.Common;
 namespace ConcordyaPayee.Web.Api.Controllers
 {
 
@@ -25,6 +29,8 @@ namespace ConcordyaPayee.Web.Api.Controllers
         private IUnitOfWork _unitOfWork;
         private UserManager<ApplicationUser> _userManager;
         private ApplicationUser _currentUser;
+
+        private readonly ICommandBus commandBus;
 
         //public BillController(IBillRepository billRepo, IBillItemRepository billItemRepo, IUnitOfWork unitOfWork)
         //{
@@ -88,34 +94,59 @@ namespace ConcordyaPayee.Web.Api.Controllers
         /// </summary>
         /// <param name="bill"></param>
         /// <returns></returns>
-        public IHttpActionResult Post([FromBody] BillModel bill)
+        [ValidateAntiForgeryToken]
+        public IHttpActionResult Save([FromBody] BillModel bill)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
-            }
-            if (bill == null) return InternalServerError(new ArgumentNullException("Bills 信息为空"));
-            
-            var dateNow = DateTime.UtcNow;
-
-            bill.Id = Guid.NewGuid().ToString();
-            bill.CreatedBy = User.Identity.GetUserId();
-            bill.CreatedOn = dateNow;
-            bill.LastUpdatedOn = dateNow;
-            bill.LastUpdatedBy = User.Identity.GetUserId();
-
-            var entity = ModelFactory.Create(bill);
-            
-            if (entity.BillItems != null)
-            {
-                foreach (var item in entity.BillItems)
+                var command = Mapper.Map<BillModel, CreateOrUpdateBillCommand>(bill);
+                IEnumerable<ValidationResult> errors = commandBus.Validate(command);
+                ModelState.AddModelErrors(errors);
+                if (ModelState.IsValid)
                 {
-                    _billItemRepo.Add(item);
+                    var result = commandBus.Submit(command);
+                    if (result.Success)
+                    {
+                        var cateBill = _billRepo.GetById(bill.Id);
+                        if (cateBill != null)
+                        {
+                            return Ok(cateBill);
+                        }
+                    }
                 }
+                else
+                {
+                    return InternalServerError();
+
+                }
+
+                return BadRequest();
+
             }
-            _billRepo.Add(entity);
-            _unitOfWork.Commit();
-            return Created("/bill/"+bill.Id,bill);
+            return BadRequest();
+
+            //if (bill == null) return InternalServerError(new ArgumentNullException("Bills 信息为空"));
+            
+            //var dateNow = DateTime.UtcNow;
+
+            //bill.Id = Guid.NewGuid().ToString();
+            //bill.CreatedBy = User.Identity.GetUserId();
+            //bill.CreatedOn = dateNow;
+            //bill.LastUpdatedOn = dateNow;
+            //bill.LastUpdatedBy = User.Identity.GetUserId();
+
+            //var entity = ModelFactory.Create(bill);
+            
+            //if (entity.BillItems != null)
+            //{
+            //    foreach (var item in entity.BillItems)
+            //    {
+            //        _billItemRepo.Add(item);
+            //    }
+            //}
+            //_billRepo.Add(entity);
+            //_unitOfWork.Commit();
+            //return Created("/bill/"+bill.Id,bill);
         }
 
         private BillItemModel CreateBillItem(BillItemModel item)

@@ -5,7 +5,7 @@ namespace ConcordyaPayee.Data.Migrations
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
-    using ConcordyaPayee.Model.Entities;
+    using ConcordyaPayee.Data.Entity;
 
     internal sealed class Configuration : DbMigrationsConfiguration<ConcordyaPayee.Data.ConcordyaPayeeDataContext>
     {
