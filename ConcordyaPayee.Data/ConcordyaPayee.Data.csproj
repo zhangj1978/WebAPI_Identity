@@ -65,6 +65,10 @@
     <Compile Include="Migrations\201412230852184_UpdateItem.Designer.cs">
       <DependentUpon>201412230852184_UpdateItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201412240925085_Recurrings.cs" />
+    <Compile Include="Migrations\201412240925085_Recurrings.Designer.cs">
+      <DependentUpon>201412240925085_Recurrings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\RepositoryBase.cs" />
@@ -91,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201412230852184_UpdateItem.resx">
       <DependentUpon>201412230852184_UpdateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201412240925085_Recurrings.resx">
+      <DependentUpon>201412240925085_Recurrings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

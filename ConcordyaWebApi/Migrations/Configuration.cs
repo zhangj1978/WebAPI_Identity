@@ -17,9 +17,9 @@ namespace ConcordyaPayee.Web.Api.Migrations
 
         protected override void Seed(ConcordyaPayee.Web.Api.Models.ApplicationDbContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context));
-            manager.Create(new ApplicationUser { UserName = "123456", PhoneNumber = "123456" }, "123456");
-            context.SaveChanges();
+            //var manager = new ApplicationUserManager(new UserStore<ApplicationUser>());
+            //manager.Create(new ApplicationUser { UserName = "123456", PhoneNumber = "123456" }, "123456");
+            //context.SaveChanges();
         }
     }
 }

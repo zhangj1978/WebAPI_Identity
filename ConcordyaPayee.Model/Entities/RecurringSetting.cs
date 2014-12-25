@@ -2,14 +2,34 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConcordyaPayee.Model.Entities;
+using System.Threading.Tasks;
 
-namespace ConcordyaPayee.Web.Api.Models
+namespace ConcordyaPayee.Model.Entities
 {
-    public class RecurringSettingModel
+    public enum RecurringRepeatBy
+    {
+        Weekly=1,
+        Monthly,
+        Annually
+    }
+
+    public enum RecurringEndsBy
+	{
+	    NeverStop=1,
+        AfterNTimes,
+        OnParticularDate
+	}
+
+    public enum RepeatOnTypes
+	{
+        DayOfWeek=1,
+        DayOfMonth
+	}
+
+    public class RecurringSetting
     {
         public string Id { get; set; }
-        public RecurringRepeatBy RepeatBy { get; set; }
+        public RecurringRepeatBy RepeatBy{ get; set; }
         //every .. month/week
         public int Interval { get; set; }
         public RepeatOnTypes RepeatOn { get; set; }
@@ -19,5 +39,6 @@ namespace ConcordyaPayee.Web.Api.Models
         public DateTime EndDate { get; set; }
         //end on N instance of recurrence.
         public int EndOnTimes { get; set; }
+
     }
 }

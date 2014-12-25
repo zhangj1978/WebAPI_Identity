@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using ConcordyaPayee.Web.Api.App_Start;
+using ConcordyaPayee.Web.Api.Mappers;
 
 namespace ConcordyaPayee.Web.Api
 {
@@ -20,6 +21,7 @@ namespace ConcordyaPayee.Web.Api
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutofacConfig.RegisterIOCs();
+            AutoMapperConfiguration.Configure();
         }
     }
 }

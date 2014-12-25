@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ConcordyaPayee.Model;
 using ConcordyaPayee.Model.Entities;
 
 namespace ConcordyaPayee.Web.Api.Models
@@ -59,7 +60,7 @@ namespace ConcordyaPayee.Web.Api.Models
             entity.CreatedBy = dto.CreatedBy;
             entity.LastUpdatedBy = dto.LastUpdatedBy;
             entity.LastUpdatedOn = dto.LastUpdatedOn;
-            entity.BillStatus = (int)dto.Status;
+            entity.BillStatus = dto.Status;
             entity.VendorId = dto.Vendor.Id;
             entity.Vendor = Create(dto.Vendor);
             entity.CategoryId = dto.Category.Id;
@@ -99,7 +100,7 @@ namespace ConcordyaPayee.Web.Api.Models
             dto.IsRecurring = entity.IsRecurring;
             dto.LastUpdatedBy = entity.LastUpdatedBy;
             dto.LastUpdatedOn = entity.LastUpdatedOn;
-            dto.Status = (BillStatus)entity.BillStatus;
+            dto.Status = entity.BillStatus;
 
             if (entity.BillItems != null && entity.BillItems.Count >0)
             {
@@ -120,22 +121,33 @@ namespace ConcordyaPayee.Web.Api.Models
         }
         #endregion
 
+        #region Recurring
+        public static RecurringSetting Create(RecurringSettingModel dto)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
         #region Category
         public static Category Create(CategoryModel dto)
         {
-            var e = new Category();
-            e.Id = dto.Id;
-            e.Name = dto.Name;
-            e.ParentId = dto.ParentId;
+            AutoMapper.Mapper.CreateMap<CategoryModel, Category>();
+            var e = AutoMapper.Mapper.Map<CategoryModel, Category>(dto);
+            //var e = new Category();
+            //e.Id = dto.Id;
+            //e.Name = dto.Name;
+            //e.ParentId = dto.ParentId;
             return e;
         }
 
         public static CategoryModel Create(Category e)
         {
-            var d = new CategoryModel();
-            d.Id = e.Id;
-            d.Name = e.Name;
-            d.ParentId = e.ParentId;
+            AutoMapper.Mapper.CreateMap<Category, CategoryModel>();
+            var d = AutoMapper.Mapper.Map<Category, CategoryModel>(e);
+            //var d = new CategoryModel();
+            //d.Id = e.Id;
+            //d.Name = e.Name;
+            //d.ParentId = e.ParentId;
             return d;
         }
         #endregion

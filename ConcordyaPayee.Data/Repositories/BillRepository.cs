@@ -19,8 +19,24 @@ namespace ConcordyaPayee.Data.Repositories
 
         public override IEnumerable<Bill> GetAll()
         {
-            var bills = base.DataContext.Bills.Take(30);
+            var bills = base.DataContext.Bills.Where(b=>b.AgingStatus== Model.AgingStatus.Regular).Take(30);
             return bills; 
+        }
+
+        public override void Delete(Expression<Func<Bill, bool>> where)
+        {
+            var bills = base.GetMany(where);
+            foreach (var b in bills)
+            {
+                b.AgingStatus = Model.AgingStatus.Deleted;
+            }
+            //base.Delete(where);
+        }
+
+        public override void Delete(Bill entity)
+        {
+            entity.AgingStatus = Model.AgingStatus.Deleted;
+            //base.Delete(entity);
         }
 
         public IDatabaseFactory _dbFactory { get; set; }
