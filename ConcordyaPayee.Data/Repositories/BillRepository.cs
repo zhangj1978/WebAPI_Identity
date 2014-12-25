@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 
 namespace ConcordyaPayee.Data.Repositories
 {

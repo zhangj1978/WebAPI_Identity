@@ -81,12 +81,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConcordyaPayee.Model\ConcordyaPayee.Model.csproj">
-      <Project>{2925ecec-9c27-4072-bd1d-d17748aeafce}</Project>
-      <Name>ConcordyaPayee.Model</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201412230811163_init.resx">
       <DependentUpon>201412230811163_init.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +93,12 @@
     <EmbeddedResource Include="Migrations\201412240925085_Recurrings.resx">
       <DependentUpon>201412240925085_Recurrings.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConcordyaPayee.Data.Entity\ConcordyaPayee.Data.Entity.csproj">
+      <Project>{2925ecec-9c27-4072-bd1d-d17748aeafce}</Project>
+      <Name>ConcordyaPayee.Data.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

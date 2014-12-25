@@ -10,7 +10,7 @@ using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data;
 using ConcordyaPayee.Thirdparty.Core;
 using System.Threading.Tasks;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 using System.Web.Mvc;
 
 namespace ConcordyaPayee.Web.Api.Controllers

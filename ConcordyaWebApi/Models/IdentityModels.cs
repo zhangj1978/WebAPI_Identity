@@ -19,6 +19,7 @@ namespace ConcordyaPayee.Web.Api.Models
             return userIdentity;
         }
 
+
         public string DefaultCompanyId { get; set; }
         public string DefaultBankAccountId { get; set; }
     }

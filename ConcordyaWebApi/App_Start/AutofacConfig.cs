@@ -11,6 +11,7 @@ using ConcordyaPayee.Data;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;
 using ConcordyaPayee.Web.Api.Controllers;
+using ConcordyaPayee.CommandProcessor;
 
 namespace ConcordyaPayee.Web.Api.App_Start
 {
@@ -27,7 +28,12 @@ namespace ConcordyaPayee.Web.Api.App_Start
             //    .AsClosedTypesOf(typeof(IRepository<>)).AsImplementedInterfaces();
             builder.RegisterAssemblyTypes(typeof(IRepository<>).Assembly)
                 .Where(t => t.Name.EndsWith("Repository"))
-                .AsImplementedInterfaces().InstancePerRequest();  
+                .AsImplementedInterfaces().InstancePerRequest();
+            var services = Assembly.Load("ConcordyaPayee.Domain");
+            builder.RegisterAssemblyTypes(services)
+            .AsClosedTypesOf(typeof(ICommandHandler<>)).InstancePerRequest();
+            builder.RegisterAssemblyTypes(services)
+            .AsClosedTypesOf(typeof(IValidationHandler<>)).InstancePerRequest();
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }

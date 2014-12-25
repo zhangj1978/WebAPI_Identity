@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConcordyaPayee.Data.Infrastructure;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 using ConcordyaPayee.Data.Repositories;
 
 namespace ConcordyaPayee.Data.Repositories
