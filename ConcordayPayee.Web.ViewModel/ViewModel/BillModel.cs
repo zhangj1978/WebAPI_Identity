@@ -4,9 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
-using ConcordyaPayee.Model;
 
-namespace ConcordayPayee.Web.ViewModel
+namespace ConcordyaPayee.Web.ViewModel
 {
 
     public class BillModel

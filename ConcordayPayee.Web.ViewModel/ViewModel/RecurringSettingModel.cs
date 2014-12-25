@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using ConcordyaPayee.Data.Entity;
 
-namespace ConcordayPayee.Web.ViewModel
+namespace ConcordyaPayee.Web.ViewModel
 {
     public class RecurringSettingModel
     {

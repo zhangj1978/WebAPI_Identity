@@ -1,4 +1,4 @@
-﻿using ConcordayPayee.Web.ViewModel;
+﻿using ConcordyaPayee.Web.ViewModel;
 using ConcordyaPayee.CommandProcessor;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;

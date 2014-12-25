@@ -213,26 +213,11 @@
     <Compile Include="Mappers\AutoMapperConfiguration.cs" />
     <Compile Include="Mappers\DomainToViewModelMappingProfile.cs" />
     <Compile Include="Mappers\ViewModelToDomainMappingProfile.cs" />
-    <Compile Include="Migrations\201412232300542_Init.cs" />
-    <Compile Include="Migrations\201412232300542_Init.Designer.cs">
-      <DependentUpon>201412232300542_Init.cs</DependentUpon>
-    <Compile Include="Migrations\201412231523487_InitIdentityDB.cs" />
-    <Compile Include="Migrations\201412231523487_InitIdentityDB.Designer.cs">
-      <DependentUpon>201412231523487_InitIdentityDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201412231544369_changeUser.cs" />
-    <Compile Include="Migrations\201412231544369_changeUser.Designer.cs">
-      <DependentUpon>201412231544369_changeUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\RequestModels\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\enums.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ModelFactory.cs" />
     <Compile Include="Models\RecurringSettingModel.cs" />
     <Compile Include="Models\ResponseBaseModel.cs" />
-    <Compile Include="Models\VendorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\Md5Encrypt.cs" />
@@ -310,9 +295,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConcordayPayee.Web.ViewModel\ConcordayPayee.Web.ViewModel.csproj">
+    <ProjectReference Include="..\ConcordayPayee.Web.ViewModel\ConcordyaPayee.Web.ViewModel.csproj">
       <Project>{205688d9-d50b-44f9-8241-e439a87b0283}</Project>
-      <Name>ConcordayPayee.Web.ViewModel</Name>
+      <Name>ConcordyaPayee.Web.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\ConcordyaPayee.CommandProcessor\ConcordyaPayee.CommandProcessor.csproj">
       <Project>{a23deb88-c65c-49ea-bee3-bbfdc7b8fe56}</Project>
@@ -342,11 +327,6 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201412232300542_Init.resx">
-      <DependentUpon>201412232300542_Init.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 
 namespace ConcordyaPayee.Web.Api.Models
 {

@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Md5Encrypt.cs" />
-    <Compile Include="Common\PayeeEntities.cs" />
+    <Compile Include="Common\PayeeEnums.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

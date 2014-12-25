@@ -44,11 +44,15 @@
     <Compile Include="Entities\BillItems.cs" />
     <Compile Include="Entities\RecurringSetting.cs" />
     <Compile Include="Entities\Vendor.cs" />
-    <Compile Include="enumTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\SMSSendRequest.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ConcordyaPayee.Core.Common\ConcordyaPayee.Core.Common.csproj">
+      <Project>{0a980cf7-5466-4f48-be56-336832b47796}</Project>
+      <Name>ConcordyaPayee.Core.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -10,7 +10,13 @@ namespace ConcordyaPayee.Core.Common
     {
         Created,
         Submitted,
-        Closed,
+        Closed
+    }
+
+    public enum AgingStatus
+    {
+        Regular,
+        Archieved,
         Deleted
     }
 }

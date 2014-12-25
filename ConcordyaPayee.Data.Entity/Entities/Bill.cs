@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConcordyaPayee.Core.Common;
 
 namespace ConcordyaPayee.Data.Entity
 {
@@ -28,8 +29,5 @@ namespace ConcordyaPayee.Data.Entity
         public string CategoryId { get; set; }
         public virtual Category Category { get; set; }
         public virtual List<BillItem> BillItems { get; set; }
-        public string RecurringId { get; set; }
-        public virtual RecurringSetting RecurringSetting { get; set; }
-
     }
 }

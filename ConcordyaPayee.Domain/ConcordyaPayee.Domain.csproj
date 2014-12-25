@@ -51,9 +51,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConcordayPayee.Web.ViewModel\ConcordayPayee.Web.ViewModel.csproj">
+    <ProjectReference Include="..\ConcordayPayee.Web.ViewModel\ConcordyaPayee.Web.ViewModel.csproj">
       <Project>{205688d9-d50b-44f9-8241-e439a87b0283}</Project>
-      <Name>ConcordayPayee.Web.ViewModel</Name>
+      <Name>ConcordyaPayee.Web.ViewModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\ConcordyaPayee.CommandProcessor\ConcordyaPayee.CommandProcessor.csproj">
       <Project>{a23deb88-c65c-49ea-bee3-bbfdc7b8fe56}</Project>

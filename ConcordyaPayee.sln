@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordyaPayee.Core.Common"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordyaPayee.Domain", "ConcordyaPayee.Domain\ConcordyaPayee.Domain.csproj", "{72731D2E-7E1B-46FF-AE75-80BAC8A64921}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordayPayee.Web.ViewModel", "ConcordayPayee.Web.ViewModel\ConcordayPayee.Web.ViewModel.csproj", "{205688D9-D50B-44F9-8241-E439A87B0283}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordyaPayee.Web.ViewModel", "ConcordayPayee.Web.ViewModel\ConcordyaPayee.Web.ViewModel.csproj", "{205688D9-D50B-44F9-8241-E439A87B0283}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcordyaPayee.Data.Entity", "ConcordyaPayee.Data.Entity\ConcordyaPayee.Data.Entity.csproj", "{2925ECEC-9C27-4072-BD1D-D17748AEAFCE}"
 EndProject

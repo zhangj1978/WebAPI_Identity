@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace ConcordayPayee.Web.ViewModel
+namespace ConcordyaPayee.Web.ViewModel
 {
     public class ModelFactory
     {

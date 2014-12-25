@@ -6,9 +6,10 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
+using ConcordyaPayee.Web.ViewModel;
 using ConcordyaPayee.Data.Infrastructure;
 using ConcordyaPayee.Data.Repositories;
-using ConcordyaPayee.Model.Entities;
+using ConcordyaPayee.Data.Entity;
 using ConcordyaPayee.Web.Api.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -69,7 +70,7 @@ namespace ConcordyaPayee.Web.Api.Controllers
         
         public IHttpActionResult Get([FromUri]string id)
         {
-            var eBill = _billRepo.Get(b => b.Id == id && b.AgingStatus == Model.AgingStatus.Regular);
+            var eBill = _billRepo.Get(b => b.Id == id && b.AgingStatus ==  Core.Common.AgingStatus.Regular);
             if (eBill == null) return NotFound();
             var dtoBill = ModelFactory.Create(eBill);
             return Ok(dtoBill);

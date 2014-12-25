@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ConcordayPayee.Web.ViewModel
+namespace ConcordyaPayee.Web.ViewModel
 {
     public class CategoryModel
     {

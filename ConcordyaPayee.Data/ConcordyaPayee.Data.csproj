@@ -95,6 +95,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConcordyaPayee.Core.Common\ConcordyaPayee.Core.Common.csproj">
+      <Project>{0a980cf7-5466-4f48-be56-336832b47796}</Project>
+      <Name>ConcordyaPayee.Core.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConcordyaPayee.Data.Entity\ConcordyaPayee.Data.Entity.csproj">
       <Project>{2925ecec-9c27-4072-bd1d-d17748aeafce}</Project>
       <Name>ConcordyaPayee.Data.Entity</Name>
